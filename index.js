@@ -13,7 +13,7 @@ import './common/icons'
 import * as filters from './common/filters'
 import { i18nInit, i18nUpdate } from './common/lang'
 import ajax from './utils/ajax'
-import { initApollo } from './utils/apollo'
+import { initApollo, addApolloClients } from './utils/apollo'
 
 window.Vue = Vue
 window.ElementUI = ElementUI
@@ -35,6 +35,7 @@ export default (routes, langs, appInfo) => {
     try {
       const router = routerInit(routes, appInfo)
       const i18n = i18nInit(langs)
+      const apolloProvider = initApollo(Vue)
 
       // Vue role manager
       Vue.use(VRM, {
@@ -60,7 +61,7 @@ export default (routes, langs, appInfo) => {
           router,
           store,
           i18n,
-          apolloProvider: initApollo(Vue),
+          apolloProvider,
           render: h => h(App)
         })
 
@@ -68,7 +69,8 @@ export default (routes, langs, appInfo) => {
           Vue,
           router,
           store,
-          i18nUpdate
+          i18nUpdate,
+          addApolloClients
         })
       })
     } catch (err) {
