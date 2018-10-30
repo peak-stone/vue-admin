@@ -1,6 +1,6 @@
 {
   "name": "@peak-stone/vue-admin",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Admin project lib using Vue.js &amp; ElementUI",
   "main": "index.js",
   "scripts": {
