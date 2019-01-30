@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/peak-stone/vue-admin/compare/v1.2.0...v2.0.0) (2019-01-30)
+
+
+### Code Refactoring
+
+* refactoring main logic ([3351728](https://github.com/peak-stone/vue-admin/commit/3351728))
+
+
+### BREAKING CHANGES
+
+* refactoring
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/peak-stone/vue-admin/compare/v1.1.0...v1.2.0) (2018-11-05)
 
