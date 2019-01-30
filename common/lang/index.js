@@ -44,5 +44,12 @@ export function i18nUpdate (userConfigs = {}) {
     i18n.setLocaleMessage(lang, messages[lang])
   }
 
+  // 刷新本地语言
+  const lang = localStorage.getItem('language')
+  const langs = Object.keys(i18n.messages)
+  const tmpLang = langs.find(item => item !== lang) || ''
+  i18n.locale = tmpLang
+  i18n.locale = lang
+
   return i18n
 }

@@ -12,8 +12,10 @@ import App from './App.vue'
 import './common/icons'
 import * as filters from './common/filters'
 import { i18nInit, i18nUpdate } from './common/lang'
+
 import ajax from './utils/ajax'
 import { initApollo, addApolloClients } from './utils/apollo'
+import Layout from './components/layout'
 
 window.Vue = Vue
 window.ElementUI = ElementUI
@@ -30,48 +32,61 @@ Object.keys(filters).forEach(key => {
 // Global methods
 Vue.prototype.$ajax = ajax
 
-export default (routes, langs, appInfo) => {
+let router
+let i18n
+let apolloProvider
+
+export const initApp = ({ routes, langs, app }) => {
+  try {
+    router = routerInit(routes, app)
+    i18n = i18nInit(langs)
+    apolloProvider = initApollo(Vue, router)
+
+    // Vue role manager
+    Vue.use(VRM, {
+      router,
+      redirect: 'login',
+      metaName: 'roles',
+      whitelist: ['login', '401', '404'],
+      debug: process.env.NODE_ENV === 'development'
+    })
+
+    // ElementUI
+    Vue.use(ElementUI, {
+      size: window.localStorage.getItem('size') || 'small',
+      i18n: (key, value) => i18n.t(key, value)
+    })
+
+    return {
+      store,
+      router,
+      Layout,
+      i18nUpdate,
+      apolloProvider,
+      addApolloClients
+    }
+  } catch (err) {
+    throw err
+  }
+}
+
+export const startApp = () => {
   return new Promise((resolve, reject) => {
     try {
-      const router = routerInit(routes, appInfo)
-      const i18n = i18nInit(langs)
-      const apolloProvider = initApollo(Vue)
-
-      // Vue role manager
-      Vue.use(VRM, {
+      new Vue({
         router,
-        redirect: 'login',
-        metaName: 'roles',
-        whitelist: ['login', '401', '404'],
-        debug: process.env.NODE_ENV === 'development'
-      })
+        store,
+        i18n,
+        apolloProvider,
+        render: h => h(App)
+      }).$mount('#app')
 
-      // ElementUI
-      Vue.use(ElementUI, {
-        size: window.localStorage.getItem('size') || 'small',
-        i18n: (key, value) => i18n.t(key, value)
-      })
-
-      store.dispatch('user/current').then(userinfo => {
-        // Important!!
-        Vue.prototype.$vrm.setRoles(userinfo ? userinfo.roles : null)
-
-        new Vue({
-          el: '#app',
-          router,
-          store,
-          i18n,
-          apolloProvider,
-          render: h => h(App)
-        })
-
-        resolve({
-          Vue,
-          router,
-          store,
-          i18nUpdate,
-          addApolloClients
-        })
+      resolve({
+        Vue,
+        router,
+        store,
+        i18nUpdate,
+        addApolloClients
       })
     } catch (err) {
       reject(err)

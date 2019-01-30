@@ -1,0 +1,9 @@
+mutation verify {
+  verify {
+    id
+    username
+    roles {
+      name
+    }
+  }
+}

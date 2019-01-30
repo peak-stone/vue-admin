@@ -1,9 +1,7 @@
 <template>
   <div class="wrap">
     <h1>403</h1>
-    <h3>
-      {{ $t('error.403') }}
-    </h3>
+    <h3>{{ $t('error.403') }}</h3>
   </div>
 </template>
 
@@ -11,16 +9,16 @@
   export default {
     name: 'Error403',
 
-    created() {
-      this.$store.dispatch('user/hasLogin').then(hasLogin => {
-        if (hasLogin) {
-          const redirectTo = this.$route.query.redirect
-          const { access, redirect } = this.$vrm.hasAccessToRoute(redirectTo)
-          if (access) {
-            this.$router.push(redirectTo)
-          }
-        }
-      })
+    created () {
+      // this.$store.dispatch('user/hasLogin').then(hasLogin => {
+      //   if (hasLogin) {
+      //     const redirectTo = this.$route.query.redirect
+      //     const { access, redirect } = this.$vrm.hasAccessToRoute(redirectTo)
+      //     if (access) {
+      //       this.$router.push(redirectTo)
+      //     }
+      //   }
+      // })
     },
   }
 </script>

@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import hook from './hook'
-import Layout from '../components/Layout'
-
+import Layout from '../components/layout'
 import basicRoutes from './modules/basic'
 
 Vue.use(VueRouter)

@@ -3,8 +3,8 @@ import { router } from '../router'
 
 // docs: https://github.com/mzabriskie/axios
 const instance = axios.create({
-  baseURL: __APIROOT__,
-  timeout: 1 * 1000
+  baseURL: APIROOT,
+  timeout: 3 * 1000
 })
 
 if (window.localStorage.getItem('token')) {

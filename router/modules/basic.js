@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout'
+import Layout from '../../components/layout'
 
 export default [
   {
@@ -24,18 +24,8 @@ export default [
     ]
   },
   {
-    path: '/login',
-    name: 'login',
-    component: () =>
-      import('../../views/login' /* webpackChunkName: "login" */),
-    hidden: true
-  },
-  {
     path: '/settings',
     component: Layout,
-    redirect: {
-      name: 'settings'
-    },
     children: [
       {
         path: 'index',

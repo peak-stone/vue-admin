@@ -1,6 +1,10 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
-    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"></hamburger>
+    <hamburger
+      :toggle-click="toggleSideBar"
+      :is-active="sidebar.opened"
+      class="hamburger-container"
+    ></hamburger>
 
     <breadcrumb></breadcrumb>
 
@@ -22,8 +26,8 @@
 
 <script>
   import { mapState } from 'vuex'
-  import Breadcrumb from '../../components/Breadcrumb'
-  import Hamburger from '../../components/Hamburger'
+  import Breadcrumb from '../breadcrumb'
+  import Hamburger from '../hamburger'
 
   export default {
     components: {
@@ -37,10 +41,10 @@
       }),
     },
     methods: {
-      toggleSideBar() {
+      toggleSideBar () {
         this.$store.dispatch('app/toggleSideBar')
       },
-      logout() {
+      logout () {
         this.$store.dispatch('user/logout').then(() => {
           this.$vrm.setRoles(null)
           location.reload()
@@ -51,7 +55,7 @@
 </script>
 
 <style scoped>
-  @import '../../assets/css/vars';
+  @import "../../assets/css/vars";
 
   .navbar {
     height: $nav-bar-height;
