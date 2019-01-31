@@ -9,12 +9,9 @@
       text-color="#bfcbd9"
       active-text-color="#409EFF"
     >
-      <sidebar-item
-        v-for="route in allRoutes"
-        :key="route.name"
-        :item="route"
-        :base-path="route.path"
-      ></sidebar-item>
+      <template v-for="route in allRoutes">
+        <sidebar-item v-if="route" :key="route.name" :item="route" :base-path="route.path"></sidebar-item>
+      </template>
     </el-menu>
   </el-scrollbar>
 </template>

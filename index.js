@@ -39,7 +39,7 @@ let apolloProvider
 export const initApp = ({ routes, stores, langs, app, routerConfig }) => {
   try {
     router = routerInit(routes, app, routerConfig)
-    store.dispatch('app/addRoutes', router.options.routes)
+    store.commit('app/ADD_ROUTES', router.options.routes)
     i18n = i18nInit(langs)
     apolloProvider = initApollo(Vue, router)
 
