@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/peak-stone/vue-admin/compare/v2.0.0...v2.1.0) (2019-01-31)
+
+
+### Features
+
+* **store:** support store module registertion ([e46bace](https://github.com/peak-stone/vue-admin/commit/e46bace))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/peak-stone/vue-admin/compare/v1.2.0...v2.0.0) (2019-01-30)
 
