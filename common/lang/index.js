@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import assigndeep from 'assign-deep'
+import { assignDeep } from '../../utils'
 import elementEnLocale from 'element-ui/lib/locale/lang/en'
 import elementZhLocale from 'element-ui/lib/locale/lang/zh-CN'
 import enLocale from './en'
@@ -22,7 +22,7 @@ let i18n
 export function i18nInit (userConfigs = {}) {
   Vue.use(VueI18n)
 
-  const messages = assigndeep({}, defaults, userConfigs)
+  const messages = assignDeep({}, defaults, userConfigs)
 
   i18n = new VueI18n({
     // set locale
@@ -38,7 +38,7 @@ export function i18nInit (userConfigs = {}) {
 }
 
 export function i18nUpdate (userConfigs = {}) {
-  const messages = assigndeep({}, defaults, userConfigs)
+  const messages = assignDeep({}, defaults, userConfigs)
 
   for (let lang of Object.keys(messages)) {
     i18n.setLocaleMessage(lang, messages[lang])
