@@ -10,13 +10,13 @@ window.VueRouter = VueRouter
 const defaultsRoutes = basicRoutes
 let routerIns
 
-export function routerInit (routes, appInfo) {
+export function routerInit (routes, app, routerConfig = {}) {
   const customRoutes = routes
     ? [
       {
-        path: `/${appInfo.id}`,
-        name: appInfo.name || 'app',
-        meta: appInfo.meta || {},
+        path: `/${app.id}`,
+        name: app.name || 'app',
+        meta: app.meta || {},
         component: Layout,
         children: routes
       }
@@ -25,9 +25,24 @@ export function routerInit (routes, appInfo) {
 
   routerIns = new VueRouter({
     routes: [...defaultsRoutes, ...customRoutes],
-    scrollBehavior: () => ({
-      y: 0
-    })
+    scrollBehavior (to, from, savedPosition) {
+      // keep-alive 返回缓存页面后记录浏览位置
+      if (savedPosition && to.meta.keepAlive) {
+        return savedPosition
+      }
+      // 异步滚动操作
+      return new Promise(resolve => {
+        setTimeout(() => {
+          document.querySelectorAll('body')[0].scrollTop = 0
+
+          resolve({
+            x: 0,
+            y: 1
+          })
+        }, 0)
+      })
+    },
+    ...routerConfig
   })
 
   hook(routerIns)

@@ -7,12 +7,6 @@ export default [
     redirect: {
       name: 'dashboard'
     },
-    meta: {
-      roles: {
-        allow: ['admin'],
-        redirect: '403'
-      }
-    },
     hidden: true,
     children: [
       {
@@ -33,11 +27,7 @@ export default [
           import('../../views/settings' /* webpackChunkName: "settings" */),
         name: 'settings',
         meta: {
-          icon: 'settings',
-          roles: {
-            allow: ['admin'],
-            redirect: '403'
-          }
+          icon: 'settings'
         }
       }
     ]
@@ -67,12 +57,5 @@ export default [
         }
       }
     ]
-  },
-  {
-    path: '*',
-    redirect: {
-      name: '404'
-    },
-    hidden: true
   }
 ]

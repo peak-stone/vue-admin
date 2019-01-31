@@ -7,7 +7,7 @@ import getters from './getters'
 Vue.use(Vuex)
 window.Vuex = Vuex
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
   modules: {
     app,
     tagsView
@@ -15,4 +15,8 @@ const store = new Vuex.Store({
   getters
 })
 
-export default store
+export const registerStoreModules = modules => {
+  Object.keys(modules).map(item => {
+    store.registerModule(item, modules[item])
+  })
+}

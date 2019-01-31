@@ -13,6 +13,7 @@ export function delToken () {
 }
 
 export function goToLogin (router) {
+  console.log('router:', router)
   if (!window.location.pathname.includes('/login')) {
     const redirect = window.location.pathname + window.location.search
     router.replace({

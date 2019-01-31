@@ -12,8 +12,13 @@ const state = {
 }
 
 const mutations = {
-  SET_ROUTES (state, routes) {
-    state.routes = routes
+  ADD_ROUTES (state, routes) {
+    state.routes = state.routes.concat(
+      Array.isArray(routes) ? routes : [routes]
+    )
+  },
+  UNSHIFT_ROUTES (state, routes = []) {
+    state.routes.unshift(...(Array.isArray(routes) ? routes : [routes]))
   },
   TOGGLE_SIDEBAR: state => {
     if (state.sidebar.opened) {
@@ -43,8 +48,8 @@ const mutations = {
 }
 
 const actions = {
-  setRoutes: ({ commit }, routes) => {
-    commit('SET_ROUTES', routes)
+  addRoutes: ({ commit }, routes) => {
+    commit('ADD_ROUTES', routes)
   },
   toggleSideBar: ({ commit }) => {
     commit('TOGGLE_SIDEBAR')

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import VRM from 'vue-role-manager'
 import { routerInit } from './router'
-import store from './store'
+import { store, registerStoreModules } from './store'
 
 import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -36,11 +36,16 @@ let router
 let i18n
 let apolloProvider
 
-export const initApp = ({ routes, langs, app }) => {
+export const initApp = ({ routes, stores, langs, app, routerConfig }) => {
   try {
-    router = routerInit(routes, app)
+    router = routerInit(routes, app, routerConfig)
+    store.dispatch('app/addRoutes', router.options.routes)
     i18n = i18nInit(langs)
     apolloProvider = initApollo(Vue, router)
+
+    if (stores) {
+      registerStoreModules(stores)
+    }
 
     // Vue role manager
     Vue.use(VRM, {

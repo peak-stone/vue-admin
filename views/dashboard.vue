@@ -1,5 +1,8 @@
 <template>
-  <div class="dashboard-container">Hi, {{ userInfo.username }} !</div>
+  <div class="dashboard-container">
+    <h3 v-if="userInfo">欢迎, {{ userInfo.username }} !</h3>
+    <p>请从左侧菜单进入子系统</p>
+  </div>
 </template>
 
 <script>

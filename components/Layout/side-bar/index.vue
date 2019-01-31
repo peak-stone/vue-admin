@@ -34,7 +34,7 @@
         sidebar: state => state.app.sidebar,
       }),
       allRoutes () {
-        return this.routes.length > 0 ? this.routes : this.$router.options.routes
+        return (this.routes && this.routes.length > 0) ? this.routes : (this.$router.options.routes || [])
       },
       isCollapse () {
         return !this.sidebar.opened
