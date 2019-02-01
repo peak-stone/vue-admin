@@ -37,7 +37,7 @@
     computed: {
       ...mapState({
         sidebar: state => state.app.sidebar,
-        userInfo: state => state.user.info,
+        userInfo: state => state.user ? state.user.info : null,
       }),
     },
     methods: {

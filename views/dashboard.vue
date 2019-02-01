@@ -13,7 +13,7 @@
 
     computed: {
       ...mapState({
-        userInfo: state => state.user.info,
+        userInfo: state => state.user ? state.user.info : null,
       }),
     },
   }

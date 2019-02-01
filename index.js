@@ -24,28 +24,23 @@ window.ElementUI = ElementUI
 Vue.config.productionTip = false
 Vue.config.devtools = process.env.NODE_ENV === 'development'
 
-// Global filters
-Object.keys(filters).forEach(key => {
-  Vue.filter(key, filters[key])
-})
-
-// Global methods
-Vue.prototype.$ajax = ajax
-
 let router
 let i18n
 let apolloProvider
 
-export const initApp = ({ routes, stores, langs, app, routerConfig }) => {
+export const initApp = ({
+  routes,
+  stores,
+  langs,
+  clients,
+  app,
+  routerConfig
+}) => {
   try {
+    i18n = i18nInit(langs)
     router = routerInit(routes, app, routerConfig)
     store.commit('app/ADD_ROUTES', router.options.routes)
-    i18n = i18nInit(langs)
     apolloProvider = initApollo(Vue, router)
-
-    if (stores) {
-      registerStoreModules(stores)
-    }
 
     // Vue role manager
     Vue.use(VRM, {
@@ -61,6 +56,22 @@ export const initApp = ({ routes, stores, langs, app, routerConfig }) => {
       size: window.localStorage.getItem('size') || 'small',
       i18n: (key, value) => i18n.t(key, value)
     })
+
+    // Global filters
+    Object.keys(filters).forEach(key => {
+      Vue.filter(key, filters[key])
+    })
+
+    // Global methods
+    Vue.prototype.$ajax = ajax
+
+    if (stores) {
+      registerStoreModules(stores)
+    }
+
+    if (clients) {
+      addApolloClients(clients)
+    }
 
     return {
       store,

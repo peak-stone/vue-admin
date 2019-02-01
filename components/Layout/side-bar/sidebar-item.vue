@@ -10,10 +10,9 @@
           :class="{'submenu-title-noDropdown': !isNest}"
         >
           <menu-item
-            v-if="onlyOneChild.meta"
-            :icon="onlyOneChild.meta.icon"
+            :icon="onlyOneChild.meta ? onlyOneChild.meta.icon : ''"
             :title="generateTitle(onlyOneChild.name)"
-            :extra="onlyOneChild.meta.extra"
+            :extra="onlyOneChild.meta ? onlyOneChild.meta.extra : ''"
           ></menu-item>
         </el-menu-item>
       </a>
@@ -32,18 +31,17 @@
           class="title-link"
         >
           <menu-item
-            v-if="item.meta"
-            :icon="item.meta.icon"
+            :icon="item.meta ? item.meta.icon : ''"
             :title="generateTitle(item.name)"
-            :extra="item.meta.extra"
+            :extra="item.meta ? item.meta.extra : ''"
           ></menu-item>
         </a>
         <!-- title不路由 -->
         <menu-item
-          v-else-if="item.meta"
-          :icon="item.meta.icon"
+          v-else
+          :icon="item.meta ? item.meta.icon : ''"
           :title="generateTitle(item.name)"
-          :extra="item.meta.extra"
+          :extra="item.meta ? item.meta.extra : ''"
         ></menu-item>
       </template>
 
@@ -67,10 +65,9 @@
           >
             <el-menu-item :index="resolvePath(child.path)">
               <menu-item
-                v-if="child.meta"
-                :icon="child.meta.icon"
+                :icon="child.meta ? child.meta.icon : ''"
                 :title="generateTitle(child.name)"
-                :extra="child.meta.extra"
+                :extra="child.meta ? child.meta.extra : ''"
               ></menu-item>
             </el-menu-item>
           </a>
