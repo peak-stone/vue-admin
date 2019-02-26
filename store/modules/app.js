@@ -12,6 +12,9 @@ const state = {
 }
 
 const mutations = {
+  SET_ROUTES (state, routes) {
+    state.routes = routes
+  },
   ADD_ROUTES (state, routes) {
     if (routes) {
       state.routes = state.routes.concat(
