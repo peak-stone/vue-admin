@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/peak-stone/vue-admin/compare/v2.1.4...v2.1.5) (2019-02-26)
+
+
+### Bug Fixes
+
+* **app:** add SET_ROUTES mutation ([2c3a70c](https://github.com/peak-stone/vue-admin/commit/2c3a70c))
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](https://github.com/peak-stone/vue-admin/compare/v2.1.3...v2.1.4) (2019-02-02)
 
