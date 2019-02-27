@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/peak-stone/vue-admin/compare/v2.1.5...v2.2.0) (2019-02-27)
+
+
+### Bug Fixes
+
+* **route:** remove 'dashboard' and 'settings' from basic routes ([3918fb1](https://github.com/peak-stone/vue-admin/commit/3918fb1))
+
+
+### Features
+
+* **store:** add store plugin (this.$mStore, Vue.prototype.$mStore) ([521d875](https://github.com/peak-stone/vue-admin/commit/521d875))
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](https://github.com/peak-stone/vue-admin/compare/v2.1.4...v2.1.5) (2019-02-26)
 
