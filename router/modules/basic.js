@@ -2,37 +2,6 @@ import Layout from '../../components/layout'
 
 export default [
   {
-    path: '/',
-    component: Layout,
-    redirect: {
-      name: 'dashboard'
-    },
-    hidden: true,
-    children: [
-      {
-        path: 'dashboard',
-        name: 'dashboard',
-        component: () =>
-          import('../../views/dashboard' /* webpackChunkName: "dashboard" */)
-      }
-    ]
-  },
-  {
-    path: '/settings',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () =>
-          import('../../views/settings' /* webpackChunkName: "settings" */),
-        name: 'settings',
-        meta: {
-          icon: 'settings'
-        }
-      }
-    ]
-  },
-  {
     path: '/error',
     component: Layout,
     redirect: 'noredirect',
