@@ -16,6 +16,7 @@ import { i18nInit, i18nUpdate } from './common/lang'
 import ajax from './utils/ajax'
 import { initApollo, addApolloClients } from './utils/apollo'
 import Layout from './components/layout'
+import storePlugin from './store/plugin'
 
 window.Vue = Vue
 window.ElementUI = ElementUI
@@ -41,6 +42,8 @@ export const initApp = ({
     router = routerInit(routes, app, routerConfig)
     store.commit('app/ADD_ROUTES', router.options.routes)
     apolloProvider = initApollo(Vue, router)
+
+    Vue.use(storePlugin)
 
     // Vue role manager
     Vue.use(VRM, {

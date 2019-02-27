@@ -42,10 +42,23 @@ const {
 })
 
 startApp()
-  .then(({ Vue }) => {
-    Vue.prototype.$appName = APP_NAME
-  })
+  .then(({ Vue }) => {})
   .catch(err => {
     console.error(err)
   })
 ```
+
+### 全局插件
+
+使用方法，如:
+
+1. 组件内: `this.$vrm`
+2. 非组件内: `Vue.prototype.$vrm`
+
+**`$ajax`**: ajax 请求插件, axios 实例
+
+**`$vrm`**: 角色控制插件 [vue-role-manager](https://www.npmjs.com/package/vue-role-manager). (含异步添加路由能力)
+
+**`$apollo`**: GraphQL 请求客户端. 参考: https://vue-apollo.netlify.com/zh-cn/guide/apollo/#apollo
+
+**`$mStore`**: vuex 插件，等同于组件内 this.\$store. 但插件不限于在组件内使用
