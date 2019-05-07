@@ -5,9 +5,9 @@
       :default-active="$route.path"
       :collapse="isCollapse"
       mode="vertical"
-      background-color="#304156"
-      text-color="#bfcbd9"
-      active-text-color="#409EFF"
+      background-color="#333333"
+      text-color="#BBBBBB"
+      active-text-color="#FEFEFE"
     >
       <template v-for="route in allRoutes">
         <sidebar-item v-if="route" :key="route.name" :item="route" :base-path="route.path"></sidebar-item>
@@ -46,6 +46,8 @@
   }
 
   .scrollbar-wrapper {
+    overflow: auto!important;
+
     .el-scrollbar__view {
       height: 100%;
 

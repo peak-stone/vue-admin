@@ -1,11 +1,16 @@
 const getters = {}
 
 const state = {
+  showTagView: localStorage.getItem('tagview') || true,
   visitedViews: [],
   cachedViews: []
 }
 
 const mutations = {
+  TOGGLE_TAGVIEW: (state, showTagView) => {
+    state.showTagView = showTagView
+    localStorage.setItem('tagview', showTagView)
+  },
   ADD_VISITED_VIEW: (state, view) => {
     if (state.visitedViews.some(v => v.path === view.path)) return
     state.visitedViews.push(
@@ -67,6 +72,9 @@ const mutations = {
 }
 
 const actions = {
+  toggleTagView ({ commit }, showTagView) {
+    commit('TOGGLE_TAGVIEW', showTagView)
+  },
   addView ({ dispatch }, view) {
     dispatch('addVisitedView', view)
     dispatch('addCachedView', view)

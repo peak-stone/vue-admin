@@ -35,9 +35,25 @@ export const initApp = ({
   langs,
   clients,
   app,
-  routerConfig
+  routerConfig,
+  navConfig
 }) => {
   try {
+    if (navConfig) {
+      // show TagView and BreadCrumb or not
+      if (navConfig.tagView && navConfig.tagView) {
+        store.commit('tagsView/TOGGLE_TAGVIEW', navConfig.tagView.show)
+      }
+      if (navConfig.hamburger && navConfig.hamburger) {
+        store.commit('app/TOGGLE_BREADCRUMB', navConfig.hamburger.show)
+      }
+    
+      if (navConfig.logo && navConfig.logo.show) {
+        // show logo or just title
+        store.commit('app/UPDATE_LOGO', navConfig.logo.logoSrc)
+      }
+    }
+
     i18n = i18nInit(langs)
     router = routerInit(routes, app, routerConfig)
     store.commit('app/ADD_ROUTES', router.options.routes)
