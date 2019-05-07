@@ -1,6 +1,6 @@
 export default {
   app: {
-    name: SITE_TITLE
+    name: SITE_TITLE || 'Admin System'
   },
   route: {
     settings: 'Settings',
@@ -8,7 +8,8 @@ export default {
     404: '404'
   },
   navbar: {
-    logOut: 'Log Out'
+    logOut: 'Log Out',
+    changepwd: 'Change Password',
   },
   tagsView: {
     refresh: 'Refresh',

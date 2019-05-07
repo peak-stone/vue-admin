@@ -5,7 +5,10 @@
     <!-- 侧栏 -->
     <section class="sidebar-container">
       <div class="app-title">
-        <router-link :to="{ name: 'dashboard' }">{{ $t('app.name') }}</router-link>
+        <router-link :to="{ path: '/' }">
+          <img v-if="showLogo" :src="logo" class="sidebar-logo">
+          <h1 class="sidebar-title">{{ $t('app.name') }}</h1>
+        </router-link>
       </div>
       <side-bar class="side-bar"></side-bar>
     </section>
@@ -13,7 +16,7 @@
     <!-- 主体内容 -->
     <section class="main-container">
       <nav-bar></nav-bar>
-      <tags-view></tags-view>
+      <tags-view v-if="showTagView"></tags-view>
       <app-main></app-main>
     </section>
   </div>
@@ -25,6 +28,7 @@
   import TagsView from './tags-view'
   import AppMain from './app-main'
   import ResizeMixin from './mixin/resize-handler'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'Layout',
@@ -39,6 +43,9 @@
     mixins: [ResizeMixin],
 
     computed: {
+       ...mapState({
+        logo: state => state.app.logo,
+      }),
       sidebar () {
         return this.$store.state.app.sidebar
       },
@@ -52,6 +59,12 @@
           withoutAnimation: this.sidebar.withoutAnimation,
           mobile: this.device === 'mobile',
         }
+      },
+      showLogo() {
+        return this.$store.state.app.showLogo
+      },
+      showTagView() {
+        return this.$store.state.app.showTagView
       },
     },
 
@@ -89,10 +102,28 @@
         height: $appTitleHeight;
         line-height: $appTitleHeight;
         text-align: center;
-        background-color: #304156;
+        background-color: #262626;
         color: #fff;
-        border-right: solid 1px #e6e6e6;
+        /* border-right: solid 1px #e6e6e6; */
         font-size: 24px;
+
+        .sidebar-logo {
+          width: 32px;
+          height: 32px;
+          vertical-align: middle;
+          margin-right: 12px;
+        }
+
+        .sidebar-title {
+          display: inline-block;
+          margin: 0;
+          font-weight: 500;
+          font-size: 18px;
+          font-family: PingFang-SC-Medium;
+          vertical-align: middle;
+          height:17px;
+          line-height:18px;
+        }
       }
 
       .side-bar {
@@ -110,6 +141,10 @@
     &.hideSidebar {
       .sidebar-container {
         width: $sidebar-min-width !important;
+        
+        .sidebar-title {
+          display: inherit
+        }
       }
 
       .main-container {

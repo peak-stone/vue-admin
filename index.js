@@ -2,7 +2,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import VRM from 'vue-role-manager'
 import { routerInit } from './router'
-import { store, registerStoreModules } from './store'
+import { initStore, registerStoreModules } from './store'
 
 import 'normalize.css/normalize.css'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -25,6 +25,7 @@ window.ElementUI = ElementUI
 Vue.config.productionTip = false
 Vue.config.devtools = process.env.NODE_ENV === 'development'
 
+let store
 let router
 let i18n
 let apolloProvider
@@ -35,9 +36,12 @@ export const initApp = ({
   langs,
   clients,
   app,
-  routerConfig
+  routerConfig,
+  navConfig
 }) => {
   try {
+    store = initStore(navConfig || {})
+
     i18n = i18nInit(langs)
     router = routerInit(routes, app, routerConfig)
     store.commit('app/ADD_ROUTES', router.options.routes)

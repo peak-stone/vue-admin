@@ -51,3 +51,7 @@ div:focus {
   margin: 30px 50px;
   position: relative;
 }
+
+.el-menu--horizontal:last-child .el-menu--popup {
+  min-width: 150px; /**/
+}

@@ -1,14 +1,17 @@
 const getters = {}
 
-const state = {
+let state = {
   routes: [],
   sidebar: {
     opened: !+localStorage.getItem('sidebarStatus'),
     withoutAnimation: false
   },
   device: 'desktop',
-  language: localStorage.getItem('language') || 'en',
-  size: localStorage.getItem('size') || 'medium'
+  language: localStorage.getItem('language') || 'zh',
+  size: localStorage.getItem('size') || 'medium',
+  showLogo: localStorage.getItem('logo') || false,
+  logo: '',
+  showBreadCrumb: localStorage.getItem('breadcrumb') || true,
 }
 
 const mutations = {
@@ -51,6 +54,18 @@ const mutations = {
   SET_SIZE: (state, size) => {
     state.size = size
     localStorage.setItem('size', size)
+  },
+  TOGGLE_LOGO: (state, showLogo) => {
+    state.showLogo = showLogo
+    localStorage.setItem('logo', showLogo)
+  },
+  UPDATE_LOGO: (state, logo) => {
+    state.showLogo = true
+    state.logo = logo
+  },
+  TOGGLE_BREADCRUMB: (state, showBreadCrumb) => {
+    state.showBreadCrumb = showBreadCrumb
+    localStorage.setItem('breadcrumb', showBreadCrumb)
   }
 }
 
@@ -69,13 +84,30 @@ const actions = {
   },
   setSize ({ commit }, size) {
     commit('SET_SIZE', size)
-  }
+  },
+  toggleLogo ({ commit }, showLogo) {
+    commit('TOGGLE_LOGO', showLogo)
+  },
+  toggleBreadCrumb ({ commit }, showBreadCrumb) {
+    commit('TOGGLE_BREADCRUMB', showBreadCrumb)
+  },
 }
 
-export default {
-  namespaced: true,
-  state,
-  getters,
-  actions,
-  mutations
+function init(config) {
+  Object.keys(state).map(item => {
+    if(config[item] !== undefined) {
+      state[item] = config[item]
+    }
+  })
+}
+
+export const initApp = config => {
+  init(config)
+  return {
+    namespaced: true,
+    state,
+    getters,
+    actions,
+    mutations
+  }
 }
