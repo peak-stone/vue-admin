@@ -1,8 +1,6 @@
-import { store } from './index'
-
 export default {
-  store,
+  store: require('./index').store,
   install (Vue, options) {
-    Vue.prototype.$mStore = store
+    Vue.prototype.$mStore = require('./index').store
   }
 }
