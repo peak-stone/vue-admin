@@ -37,10 +37,10 @@ export const initApp = ({
   clients,
   app,
   routerConfig,
-  navConfig
+  commonConfig
 }) => {
   try {
-    store = initStore(navConfig || {})
+    store = initStore(commonConfig || {})
 
     i18n = i18nInit(langs)
     router = routerInit(routes, app, routerConfig)

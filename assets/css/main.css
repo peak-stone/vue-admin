@@ -52,6 +52,18 @@ div:focus {
   position: relative;
 }
 
-.el-menu--horizontal:last-child .el-menu--popup {
-  min-width: 150px; /**/
+.user-dropdown {
+  margin-top: -2px;
+  width: 150px!important;
+  background-color: #262626;
+  border: unset;
+}
+
+.user-dropdown .el-dropdown-menu__item {
+  background-color: #262626!important;
+  color: #999999;
+}
+
+.user-dropdown .popper__arrow {
+  display: none;
 }

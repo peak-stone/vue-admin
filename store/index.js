@@ -7,7 +7,7 @@ import { initTagsView } from './modules/tagsView'
 Vue.use(Vuex)
 window.Vuex = Vuex
 
-let store
+export let store
 
 export const initStore = config => {
   const app = initApp(config)

@@ -9,6 +9,7 @@ let state = {
   device: 'desktop',
   language: localStorage.getItem('language') || 'zh',
   size: localStorage.getItem('size') || 'medium',
+  navbar: [],
   showLogo: localStorage.getItem('logo') || false,
   logo: '',
   showBreadCrumb: localStorage.getItem('breadcrumb') || true,
@@ -66,7 +67,10 @@ const mutations = {
   TOGGLE_BREADCRUMB: (state, showBreadCrumb) => {
     state.showBreadCrumb = showBreadCrumb
     localStorage.setItem('breadcrumb', showBreadCrumb)
-  }
+  },
+  SET_NAVBAR (state, navbar) {
+    state.navbar = navbar || []
+  },
 }
 
 const actions = {
