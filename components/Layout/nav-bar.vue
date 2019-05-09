@@ -47,9 +47,6 @@ export default {
       return this.$store.state.app.showBreadCrumb
     },
   },
-  created() {
-    console.log(this.userInfo)
-  },
   methods: {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')

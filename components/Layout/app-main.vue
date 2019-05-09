@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main">
+  <section :class="appMainClass">
     <transition name="fade-transform" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view :key="key"/>
@@ -18,6 +18,13 @@
       },
       key () {
         return this.$route.fullPath
+      },
+      appMainClass() {
+        if (!this.$store.state.tagsView.showTagView) {
+          return 'app-main-notags'
+        } else {
+          return 'app-main'
+        }
       }
     }
   }
@@ -29,6 +36,12 @@
   .app-main {
     /* 50 = navbar  */
     min-height: calc(100vh - $nav-bar-height - $tags-view-height);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .app-main-notags {
+    min-height: calc(100vh - $nav-bar-height - 1px);
     position: relative;
     overflow: hidden;
   }
