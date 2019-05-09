@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/peak-stone/vue-admin/compare/v2.3.0...v2.3.1) (2019-05-09)
+
+
+### Bug Fixes
+
+* fix class:app-main min-height without tagsview ([3bd9dfc](https://github.com/peak-stone/vue-admin/commit/3bd9dfc))
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/peak-stone/vue-admin/compare/v2.2.0...v2.3.0) (2019-05-08)
 
