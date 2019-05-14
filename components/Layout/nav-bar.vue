@@ -1,6 +1,7 @@
 <template>
   <el-menu class="navbar" mode="horizontal">
     <hamburger
+      v-if="showHamburger"
       :toggle-click="toggleSideBar"
       :is-active="sidebar.opened"
       class="hamburger-container"
@@ -13,8 +14,7 @@
         <i class="el-icon-caret-bottom"></i>
       </div>
       <el-dropdown-menu slot="dropdown" class="user-dropdown">
-        <el-dropdown-item v-for="(navItem, navIndex) in navbar"
-          :key="'navbar-' + navIndex">
+        <el-dropdown-item v-for="(navItem, navIndex) in navbar" :key="'navbar-' + navIndex">
           <span style="display:block;" @click="clickNavItem(navItem)">{{ $t(navItem.title) }}</span>
         </el-dropdown-item>
         <el-dropdown-item>
@@ -43,6 +43,9 @@ export default {
       sidebar: state => state.app.sidebar,
       userInfo: state => state.user ? state.user.info : null,
     }),
+    showHamburger() {
+      return this.$store.state.app.showHamburger
+    },
     showBreadCrumb() {
       return this.$store.state.app.showBreadCrumb
     },

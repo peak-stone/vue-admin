@@ -12,6 +12,7 @@ let state = {
   navbar: [],
   showLogo: localStorage.getItem('logo') || false,
   logo: '',
+  showHamburger: true,
   showBreadCrumb: localStorage.getItem('breadcrumb') || true,
 }
 
