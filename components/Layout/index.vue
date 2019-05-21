@@ -150,7 +150,7 @@
       .main-container {
         margin-left: $sidebar-min-width;
       }
-
+      
       >>> .submenu-title-noDropdown {
         padding-left: 10px !important;
         position: relative;
@@ -222,6 +222,14 @@
 </style>
 
 <style>
+  .el-menu.el-menu--horizontal {
+    border-bottom: none!important;
+  }
+
+  .el-menu {
+    border-right: none!important;
+  }
+
   .el-menu--vertical {
     & > .el-menu {
       .svg-icon {
