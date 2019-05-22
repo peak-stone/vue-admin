@@ -44,7 +44,7 @@ export default {
       userInfo: state => state.user ? state.user.info : null,
     }),
     showHamburger() {
-      return this.$store.state.app.showHamburger
+      return this.$store.state.app.showHamburger || !this.sidebar.opened
     },
     showBreadCrumb() {
       return this.$store.state.app.showBreadCrumb
