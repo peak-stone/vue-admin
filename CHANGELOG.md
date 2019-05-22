@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.4.2"></a>
+## [2.4.2](https://github.com/peak-stone/vue-admin/compare/v2.4.1...v2.4.2) (2019-05-22)
+
+
+### Bug Fixes
+
+* hamburger bug fix ([b544439](https://github.com/peak-stone/vue-admin/commit/b544439))
+
+
+
 <a name="2.4.1"></a>
 ## [2.4.1](https://github.com/peak-stone/vue-admin/compare/v2.4.0...v2.4.1) (2019-05-21)
 
