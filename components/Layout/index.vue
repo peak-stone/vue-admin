@@ -64,7 +64,7 @@
         return this.$store.state.app.showLogo
       },
       showTagView() {
-        return this.$store.state.app.showTagView
+        return this.$store.state.tagsView.showTagView
       },
     },
 

@@ -8,7 +8,7 @@
             class="no-redirect"
           >{{ generateTitle(item.name) }}</span>
 
-          <router-link v-else :to="item.redirect || item.path">{{ generateTitle(item.name) }}</router-link>
+          <router-link v-else :to="item.redirect || item.path" class="parent-breadcrumb">{{ generateTitle(item.name) }}</router-link>
         </el-breadcrumb-item>
       </template>
     </transition-group>
@@ -57,6 +57,9 @@
     .no-redirect {
       color: #97a8be;
       cursor: text;
+    }
+    .parent-breadcrumb {
+      color: #999999;
     }
   }
 </style>
