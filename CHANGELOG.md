@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.4.3"></a>
+## [2.4.3](https://github.com/peak-stone/vue-admin/compare/v2.4.2...v2.4.3) (2019-06-24)
+
+
+### Bug Fixes
+
+* fix tags-view & breadcrumb ([e50fe75](https://github.com/peak-stone/vue-admin/commit/e50fe75))
+
+
+
 <a name="2.4.2"></a>
 ## [2.4.2](https://github.com/peak-stone/vue-admin/compare/v2.4.1...v2.4.2) (2019-05-22)
 
